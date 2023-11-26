@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """A simple Flask web application"""
 from flask import Flask, render_template
-
 from models import storage
 from models.state import State
 
@@ -20,7 +19,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def flask_teardown(exc):
+def close_db(exc):
     """The Flask app/request context end event listener"""
     storage.close()
 
